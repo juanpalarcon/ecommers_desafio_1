@@ -6,7 +6,6 @@ class Product < ApplicationRecord
 
   has_many :variants
   has_many :sizes, through: :variants
-
   has_many :colors, through: :variants
 
 end
