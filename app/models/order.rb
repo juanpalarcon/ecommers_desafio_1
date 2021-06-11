@@ -43,4 +43,15 @@ class Order < ApplicationRecord
     end
     update_attribute(:total, sum)
   end
+
+  def total_in_cents
+    total * 100
+  end
+
+
+
+
+
+
+
 end
