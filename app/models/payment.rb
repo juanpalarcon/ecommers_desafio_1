@@ -21,11 +21,12 @@ class Payment < ApplicationRecord
 
       #update object states
       update_attributes(state:  "completed")
-      update_attributes(state:  "completed"
+      update_attributes(state:  "completed") # tiene que ir en el modelo order
+
 
       ActiveRecord::Base.transaction do
-        order.save!
-        payment.save!
+        update_attributes(state:  "completed")
+
       end
 
   end 

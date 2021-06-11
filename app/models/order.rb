@@ -49,6 +49,7 @@ class Order < ApplicationRecord
   end
 
 
+  update_attributes(state:  "completed") # tiene que ir en el modelo order
 
 
 
