@@ -17,19 +17,29 @@ class Payment < ApplicationRecord
     )
   end
 
-  def payment_order_response
+  # def payment_order_response
 
-      #update object states
-      update_attributes(state:  "completed")
-      update_attributes(state:  "completed") # tiene que ir en el modelo order
+  #     #update object states
+  #     update_attributes(state:  "completed")
+  #     update_attributes(state:  "completed") # tiene que ir en el modelo order
 
 
-      ActiveRecord::Base.transaction do
-        update_attributes(state:  "completed")
+  #     ActiveRecord::Base.transaction do
+  #       update_attributes(state:  "completed")
 
-      end
+  #     end
 
-  end 
+  # end 
 
+  def complete!
+    update_attribute(:state, 'completed')
+  end
+
+  def close!
+    ActiveRecord::Base.transaction do
+    complete!
+    end
+  end
+ 
 
 end

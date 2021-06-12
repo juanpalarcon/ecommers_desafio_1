@@ -49,7 +49,21 @@ class Order < ApplicationRecord
   end
 
 
-  update_attributes(state:  "completed") # tiene que ir en el modelo order
+  def create_payment(pm_code, token)
+    payments << Payment.create(
+      payments_method_id: PaymentMethod.find_by(code: pm_code).id,
+      state: 'processing',
+      total: total,
+      token: token
+    )
+  end
+
+
+  def complete!
+    update_attribute(:state, 'completed')
+  end
+
+  #   update_attributes(state:  "completed") # tiene que ir en el modelo order
 
 
 

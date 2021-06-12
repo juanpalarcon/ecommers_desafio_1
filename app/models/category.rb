@@ -14,7 +14,7 @@ class Category < ApplicationRecord
 
 
   def self.all_parents
-    where(:category_id :nil)
+    where(category_id: nil)
   end
 
 end
